@@ -11,9 +11,21 @@ Example:
     n = 3
     return [0, 1, 1]
 """
-def fibonacci(n: int) -> list[int]:
+def fibonacci(num: int) -> list[int]: # what does this line do:
+    first_fibonacci = 0
+    second_fibonacci = 1
+    list_fibo = [first_fibonacci, second_fibonacci]
+  
 
-    return []
+    if num <= 0: #checks if the nth the is not less then 0 
+        raise ValueError
+    elif num == 1: #if the nth term is 1 you must output first_fibonacci
+       return first_fibonacci
+    else:
+        while  len(list_fibo) < num:
+            n= list_fibo[- 1] + list_fibo[-2]
+            list_fibo.append(n)
+        return list_fibo
 
 
 """
@@ -25,7 +37,16 @@ Example:
     return [2, 4, 8, 22, 50, 98]
 """
 def even(nums: list[int]) -> list[int]: 
-    return []
+    count = 0
+    even_list = []
+    for i in nums:
+        if i % 2 == 0:
+            even_list.append(i)
+            count = count + 1
+    print(len(even_list))
+    return even_list
+
+    
 
 
 """
@@ -37,8 +58,15 @@ Example:
     return [27, 17, 3, 1]
 """
 def odd(nums: list[int]) -> list[int]:
-
-    return []
+    count = 0
+    odd_list = []
+    for i in nums:
+        if i % 2 == 1:
+            odd_list.append(i)
+            count = count + 1
+            
+    print(len(odd_list)) 
+    return odd_list[::-1]
 
 
 """
@@ -54,6 +82,10 @@ Example:
     sum(odd) = 4, sum(even) = 2 → returns 'Odd'
 """
 def even_vs_odd(nums: list[int]) -> str:
+    for i in nums:
+        if i % 2 == 0:
+            sum_even = sum(i)
+            return sum_even
     return ""
 
 
@@ -86,4 +118,18 @@ Hint:
     - Look at the pattern of the example carefully.
 """
 def generate_email(fullname: str, year: str, campus: str) -> str:
-    return ""
+    *name, surname = fullname.split()
+    name_1 = name[0]
+    name_1.lower()
+
+    return f'{name_1[0:2]}{surname.lower()[0:3]}{campus}{year[1:4]}@student.wethinkcode.co.za'
+
+
+
+
+
+# print(even([1,2,3,4,6]))
+# print(odd([1,2,3,7]))
+print(fibonacci(5))
+# print(even_vs_odd([1,2,3,8,5]))
+print(generate_email('Oriel Kopano Dibakoane','2027','cpt'))
