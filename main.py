@@ -82,11 +82,40 @@ Example:
     sum(odd) = 4, sum(even) = 2 → returns 'Odd'
 """
 def even_vs_odd(nums: list[int]) -> str:
+    count = 0
+    sum_evens = 0
+    sum_odds = 0
+    list_even = []
+    list_odds = []
+    empty_list = []
     for i in nums:
         if i % 2 == 0:
-            sum_even = sum(i)
-            return sum_even
-    return ""
+            list_even.append(i)
+            sum_evens = sum(list_even)
+            count = count + 1
+
+            for i in nums:
+                if i % 2 == 1:
+                    list_odds.append(i)
+                    sum_odds = sum(list_odds)
+                    count = count + 1
+    
+
+                if sum_evens > sum_odds:
+                    result = 'Even'
+                # else:
+                #       result = 'Tie'
+                elif sum_evens < sum_odds :
+                    result = 'Odd'
+                else: 
+                    result = 'Tie'
+    if list_even == empty_list and list_odds == empty_list:
+                        result = 'Tie'
+                
+            
+    return result
+    
+     
 
 
 """
@@ -130,6 +159,6 @@ def generate_email(fullname: str, year: str, campus: str) -> str:
 
 # print(even([1,2,3,4,6]))
 # print(odd([1,2,3,7]))
-print(fibonacci(5))
-# print(even_vs_odd([1,2,3,8,5]))
-print(generate_email('Oriel Kopano Dibakoane','2027','cpt'))
+# print(fibonacci(5))
+print(even_vs_odd([]))
+# print(generate_email('Oriel Kopano Dibakoane','2027','cpt'))
