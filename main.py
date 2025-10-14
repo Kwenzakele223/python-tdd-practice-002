@@ -171,4 +171,4 @@ def generate_email(fullname: str, year: str, campus: str) -> str:
 # print(fibonacci(5))
 # print(even_vs_odd([]))
 # print(generate_email('Oriel Kopano Dibakoane','2027','cpt'))
-print(is_prime(9))
+print(is_prime(10))
