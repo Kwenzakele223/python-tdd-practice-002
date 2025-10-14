@@ -131,7 +131,16 @@ Example:
     is_prime(-3) → raises ValueError
 """
 def is_prime(n):
-    return False
+    if n <= 0:
+         raise ValueError
+    else:
+        if n % 2 == 1:
+            result = True
+        elif n == 2:
+            result = True
+        else:
+            result = False
+    return result
 
 
 """
@@ -160,5 +169,6 @@ def generate_email(fullname: str, year: str, campus: str) -> str:
 # print(even([1,2,3,4,6]))
 # print(odd([1,2,3,7]))
 # print(fibonacci(5))
-print(even_vs_odd([]))
+# print(even_vs_odd([]))
 # print(generate_email('Oriel Kopano Dibakoane','2027','cpt'))
+print(is_prime(9))
