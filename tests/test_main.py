@@ -1,5 +1,6 @@
-from main import *
 import unittest
+from main import *
+
 
 class TestFibonacci(unittest.TestCase):
     
@@ -98,7 +99,8 @@ class TestGenerateEmail(unittest.TestCase):
 
 
             
-
+if __name__ == '__main__':
+    unittest.main()
         
         
             

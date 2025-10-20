@@ -18,9 +18,9 @@ def fibonacci(num: int) -> list[int]: # what does this line do:
   
 
     if num <= 0: #checks if the nth the is not less then 0 
-        raise ValueError
+        return []
     elif num == 1: #if the nth term is 1 you must output first_fibonacci
-       return first_fibonacci
+       return [first_fibonacci]
     else:
         while  len(list_fibo) < num:
             n= list_fibo[- 1] + list_fibo[-2]
@@ -43,7 +43,7 @@ def even(nums: list[int]) -> list[int]:
         if i % 2 == 0:
             even_list.append(i)
             count = count + 1
-    print(len(even_list))
+            even_list.sort()
     return even_list
 
     
@@ -64,8 +64,7 @@ def odd(nums: list[int]) -> list[int]:
         if i % 2 == 1:
             odd_list.append(i)
             count = count + 1
-            
-    print(len(odd_list)) 
+            odd_list.sort()
     return odd_list[::-1]
 
 
@@ -94,25 +93,23 @@ def even_vs_odd(nums: list[int]) -> str:
             sum_evens = sum(list_even)
             count = count + 1
 
-            for i in nums:
-                if i % 2 == 1:
-                    list_odds.append(i)
-                    sum_odds = sum(list_odds)
-                    count = count + 1
+    for i in nums:
+        if i % 2 == 1:
+            list_odds.append(i)
+            sum_odds = sum(list_odds)
+            count = count + 1
     
 
-                if sum_evens > sum_odds:
-                    result = 'Even'
-                # else:
-                #       result = 'Tie'
-                elif sum_evens < sum_odds :
-                    result = 'Odd'
-                else: 
-                    result = 'Tie'
-    if list_even == empty_list and list_odds == empty_list:
-                        result = 'Tie'
+        if sum_evens > sum_odds:
+            result = 'Even'
+        elif sum_odds > sum_evens :
+            result = 'Odd'
+        else:
+             return 'Tie'
                 
-            
+    if list_even == empty_list and list_odds == empty_list:
+                    result = 'Tie'
+                
     return result
     
      
@@ -131,7 +128,7 @@ Example:
     is_prime(-3) → raises ValueError
 """
 def is_prime(n):
-    if n <= 0:
+    if isinstance(n, (list, dict, str)) or n < 0:
          raise ValueError
     else:
         if n % 2 == 1:
@@ -158,17 +155,19 @@ Hint:
 def generate_email(fullname: str, year: str, campus: str) -> str:
     *name, surname = fullname.split()
     name_1 = name[0]
-    name_1.lower()
+    if name_1 == name[0]:
+         return f'{name_1[0:2].lower()}{surname.lower()[0:3]}{campus}{year[1:4]}@student.wethinkcode.co.za'
+    
 
-    return f'{name_1[0:2]}{surname.lower()[0:3]}{campus}{year[1:4]}@student.wethinkcode.co.za'
+    return f'{name[0:2]}{surname.lower()[0:3]}{campus}{year[1:4]}@student.wethinkcode.co.za'
 
 
 
 
 
-# print(even([1,2,3,4,6]))
-# print(odd([1,2,3,7]))
-# print(fibonacci(5))
-# print(even_vs_odd([]))
+print(even([16,9,4,8,12,4]))
+# print(odd([0, 1, 1, 2, 3, 5, 8, 13, 21, 34]))
+# print(fibonacci(-1))
+# print(even_vs_odd([5,3,8]))
 # print(generate_email('Oriel Kopano Dibakoane','2027','cpt'))
-print(is_prime(10))
+print(is_prime(0))
